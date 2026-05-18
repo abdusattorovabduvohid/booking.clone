@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { StoreProvider } from "@/store/StoreProvider";
 import "../globals.css";
 
 import { Toaster } from "react-hot-toast";
@@ -53,12 +54,14 @@ export default async function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NextIntlClientProvider messages={messages}>
-            <Toaster position="top-center" />
-            <Header />
-            <div className="flex-1">
-              {children}
-            </div>
-            <Footer />
+            <StoreProvider>
+              <Toaster position="top-center" />
+              <Header />
+              <div className="flex-1">
+                {children}
+              </div>
+              <Footer />
+            </StoreProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

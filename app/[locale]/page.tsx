@@ -1,17 +1,21 @@
-import { Hero } from "@/components/home/Hero";
-import { TrendingDestinations } from "@/components/home/TrendingDestinations";
-import { PropertyCategories } from "@/components/home/PropertyCategories";
-import { RecentSearches } from "@/components/home/RecentSearches";
-import { OffersBanner } from "@/components/home/OffersBanner";
-import { HomesGuestsLove } from "@/components/home/HomesGuestsLove";
-import { DiscoverCountry } from "@/components/home/DiscoverCountry";
-import { QuickTripPlanner } from "@/components/home/QuickTripPlanner";
-import { UniqueProperties } from "@/components/home/UniqueProperties";
-import { WeekendOffers } from "@/components/home/WeekendOffers";
+import { Hero } from "@/components/first/home/Hero";
+import { TrendingDestinations } from "@/components/first/home/TrendingDestinations";
+import { PropertyCategories } from "@/components/first/home/PropertyCategories";
+import { RecentSearches } from "@/components/first/home/RecentSearches";
+import { OffersBanner } from "@/components/first/home/OffersBanner";
+import { HomesGuestsLove } from "@/components/first/home/HomesGuestsLove";
+import { DiscoverCountry } from "@/components/first/home/DiscoverCountry";
+import { QuickTripPlanner } from "@/components/first/home/QuickTripPlanner";
+import { LookingForStay } from "@/components/first/home/LookingForStay";
+import { UniqueProperties } from "@/components/first/home/UniqueProperties";
+import { WeekendOffers } from "@/components/first/home/WeekendOffers";
+import { HomePreFooter } from "@/components/first/home/HomePreFooter";
 import { fetchQuickTripPlanner } from "@/lib/backend-data";
+import { auth } from "@/auth";
 
 export default async function HomePage() {
   const plannerData = await fetchQuickTripPlanner() || [];
+  const session = await auth();
 
   return (
     <main>
@@ -23,9 +27,11 @@ export default async function HomePage() {
         <TrendingDestinations />
         <PropertyCategories />
         <DiscoverCountry />
-        <QuickTripPlanner destinations={plannerData} />
+        <QuickTripPlanner />
+        <LookingForStay />
         <UniqueProperties />
         <WeekendOffers />
+        <HomePreFooter sessionUsername={session?.user?.name} />
       </div>
     </main>
   );

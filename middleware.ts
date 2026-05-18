@@ -20,7 +20,14 @@ export default auth((req) => {
   );
 
   if (!isAuth && isProtected) {
-    const loginUrl = new URL(`/${routing.defaultLocale}/login`, req.url);
+    // Extract locale segment from path (e.g. /ru/profile -> ru, /uz/profile -> uz)
+    const segments = path.split("/").filter(Boolean);
+    const detectedLocale = segments[0] && routing.locales.includes(segments[0] as any) 
+      ? segments[0] 
+      : routing.defaultLocale;
+
+    const loginUrl = new URL(`/${detectedLocale}/login`, req.url);
+    loginUrl.searchParams.set("callbackUrl", req.url); // Preserve context on redirect
     return Response.redirect(loginUrl);
   }
 
