@@ -89,7 +89,6 @@ export function WeekendOffers() {
     },
   ];
 
-  // Ratings helper
   const getRatingLabel = (rating: number) => {
     if (rating >= 9.0) {
       if (locale === "ru") return "Превосходно";
@@ -106,7 +105,6 @@ export function WeekendOffers() {
     return "Good";
   };
 
-  // 2 nights pricing formatter matching screenshot perfectly
   const getPriceLabel = (orig: number, disc: number) => {
     const uzsOrig = orig * 12000;
     const uzsDisc = disc * 12000;
@@ -150,7 +148,6 @@ export function WeekendOffers() {
     );
   };
 
-  // Carousel slider code
   const sliderRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);

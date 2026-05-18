@@ -8,7 +8,6 @@ export function LanguageSwitcher() {
   const locale = useLocale();
 
   const toggleLanguage = () => {
-    // Cycle through: en -> ru -> uz -> en
     const nextLocale = locale === "en" ? "ru" : locale === "ru" ? "uz" : "en";
     router.replace(pathname, { locale: nextLocale });
   };

@@ -16,37 +16,30 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
   const resolvedSearchParams = await searchParams;
   const destination = typeof resolvedSearchParams?.destination === 'string' ? resolvedSearchParams.destination : undefined;
 
-  // Fetch matched properties
   const properties = await searchHotels({ destination });
 
-  // Apply filters locally for 1000% reliability
   let filtered = [...properties];
 
-  // Stars filter
   const starsParam = resolvedSearchParams?.stars;
   if (typeof starsParam === 'string' && starsParam) {
     const starsList = starsParam.split(",").map(Number);
     filtered = filtered.filter(h => starsList.includes(h.stars));
   }
 
-  // Type filter
   const typeParam = resolvedSearchParams?.type;
   if (typeof typeParam === 'string' && typeParam) {
     const typesList = typeParam.split(",");
     filtered = filtered.filter(h => typesList.includes(h.type));
   }
 
-  // Breakfast filter
   if (resolvedSearchParams?.breakfast === 'true') {
     filtered = filtered.filter(h => h.breakfast === true);
   }
 
-  // Free cancellation filter
   if (resolvedSearchParams?.freeCancel === 'true') {
     filtered = filtered.filter(h => h.freeCancel === true);
   }
 
-  // Price range filter
   const priceRangeParam = resolvedSearchParams?.priceRange;
   if (typeof priceRangeParam === 'string' && priceRangeParam) {
     const ranges = priceRangeParam.split(",");
@@ -58,7 +51,6 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
     });
   }
 
-  // Sorting
   const sortParam = typeof resolvedSearchParams?.sort === 'string' ? resolvedSearchParams.sort : 'best';
   if (sortParam === 'price_asc') {
     filtered.sort((a, b) => a.price - b.price);
@@ -68,7 +60,6 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
     filtered.sort((a, b) => b.stars - a.stars);
   }
 
-  // Build URL helper for sorting
   const buildSortUrl = (newSort: string) => {
     const params = new URLSearchParams();
     if (resolvedSearchParams) {

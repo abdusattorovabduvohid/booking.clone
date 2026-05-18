@@ -12,7 +12,6 @@ export interface CityMock {
 
 export function getMockCities(): CityMock[] {
   const cities: CityMock[] = [
-    // === UZBEKISTAN CITIES (50+) ===
     { id: 1, name: "Ташкент", nameEn: "Tashkent", nameUz: "Toshkent", country: "Узбекистан", countryEn: "Uzbekistan", countryUz: "O'zbekistan", flag: "🇺🇿", variants: 1408 },
     { id: 2, name: "Самарканд", nameEn: "Samarkand", nameUz: "Samarqand", country: "Узбекистан", countryEn: "Uzbekistan", countryUz: "O'zbekistan", flag: "🇺🇿", variants: 864 },
     { id: 3, name: "Бухара", nameEn: "Bukhara", nameUz: "Buxoro", country: "Узбекистан", countryEn: "Uzbekistan", countryUz: "O'zbekistan", flag: "🇺🇿", variants: 570 },
@@ -64,7 +63,6 @@ export function getMockCities(): CityMock[] {
     { id: 49, name: "Беруни", nameEn: "Beruni", nameUz: "Beruniy", country: "Узбекистан", countryEn: "Uzbekistan", countryUz: "O'zbekistan", flag: "🇺🇿", variants: 17 },
     { id: 50, name: "Тахиаташ", nameEn: "Takhiatash", nameUz: "Taxiatosh", country: "Узбекистан", countryEn: "Uzbekistan", countryUz: "O'zbekistan", flag: "🇺🇿", variants: 8 },
 
-    // === CANADA CITIES (50+) ===
     { id: 51, name: "Торонто", nameEn: "Toronto", nameUz: "Toronto", country: "Канада", countryEn: "Canada", countryUz: "Kanada", flag: "🇨🇦", variants: 4325 },
     { id: 52, name: "Ванкувер", nameEn: "Vancouver", nameUz: "Vankuver", country: "Канада", countryEn: "Canada", countryUz: "Kanada", flag: "🇨🇦", variants: 2180 },
     { id: 53, name: "Монреаль", nameEn: "Montreal", nameUz: "Monreal", country: "Канада", countryEn: "Canada", countryUz: "Kanada", flag: "🇨🇦", variants: 3105 },
@@ -116,7 +114,6 @@ export function getMockCities(): CityMock[] {
     { id: 99, name: "Фредериктон", nameEn: "Fredericton", nameUz: "Frederikton", country: "Канада", countryEn: "Canada", countryUz: "Kanada", flag: "🇨🇦", variants: 142 },
     { id: 100, name: "Шарлоттаун", nameEn: "Charlottetown", nameUz: "Sharlottaun", country: "Канада", countryEn: "Canada", countryUz: "Kanada", flag: "🇨🇦", variants: 159 },
 
-    // === UNITED STATES CITIES (50+) ===
     { id: 101, name: "Нью-Йорк", nameEn: "New York", nameUz: "Nyu-York", country: "США", countryEn: "USA", countryUz: "AQSh", flag: "🇺🇸", variants: 8940 },
     { id: 102, name: "Лос-Анджелес", nameEn: "Los Angeles", nameUz: "Los-Anjeles", country: "США", countryEn: "USA", countryUz: "AQSh", flag: "🇺🇸", variants: 5630 },
     { id: 103, name: "Чикаго", nameEn: "Chicago", nameUz: "Chikago", country: "США", countryEn: "USA", countryUz: "AQSh", flag: "🇺🇸", variants: 3410 },
@@ -168,7 +165,6 @@ export function getMockCities(): CityMock[] {
     { id: 149, name: "Орландо", nameEn: "Orlando", nameUz: "Orlando", country: "США", countryEn: "USA", countryUz: "AQSh", flag: "🇺🇸", variants: 5612 },
     { id: 150, name: "Солт-Лейк-Сити", nameEn: "Salt Lake City", nameUz: "Solt-Leyk-Siti", country: "США", countryEn: "USA", countryUz: "AQSh", flag: "🇺🇸", variants: 684 },
 
-    // === EUROPE, ASIA, MIDDLE EAST & GLOBAL CITIES (60+) ===
     { id: 151, name: "Лондон", nameEn: "London", nameUz: "London", country: "Великобритания", countryEn: "United Kingdom", countryUz: "Buyuk Britaniya", flag: "🇬🇧", variants: 9450 },
     { id: 152, name: "Париж", nameEn: "Paris", nameUz: "Parij", country: "Франция", countryEn: "France", countryUz: "Fransiya", flag: "🇫🇷", variants: 8120 },
     { id: 153, name: "Токио", nameEn: "Tokyo", nameUz: "Tokio", country: "Япония", countryEn: "Japan", countryUz: "Yaponiya", flag: "🇯🇵", variants: 6890 },

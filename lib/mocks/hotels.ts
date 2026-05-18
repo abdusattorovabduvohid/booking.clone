@@ -296,7 +296,6 @@ export function getMockHotels(type = "all", limit = 100) {
     },
   ];
 
-  // === CANADA MOCK HOTELS ===
   const CANADA = [
     {
       id: 13,
@@ -420,7 +419,6 @@ export function getMockHotels(type = "all", limit = 100) {
     },
   ];
 
-  // === USA MOCK HOTELS ===
   const USA = [
     {
       id: 18,
@@ -472,7 +470,6 @@ export function getMockHotels(type = "all", limit = 100) {
     },
   ];
 
-  // === UZBEKISTAN REGIONAL MOCK HOTELS ===
   const UZ_REGIONAL = [
     {
       id: 20,
@@ -620,7 +617,6 @@ export function getMockHotels(type = "all", limit = 100) {
     },
   ];
 
-  // === TRENDING GLOBAL DESTINATIONS MOCK HOTELS ===
   const TRENDING = [
     {
       id: 50,

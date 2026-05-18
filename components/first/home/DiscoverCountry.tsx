@@ -78,7 +78,6 @@ export function DiscoverCountry() {
     router.push(`/search?destination=${encodeURIComponent(cityName)}`);
   };
 
-  // Carousel code
   const sliderRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);

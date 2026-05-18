@@ -27,7 +27,6 @@ export function HeaderActionsClient({
   const currencyRef = useRef<HTMLDivElement>(null);
   const helpRef = useRef<HTMLDivElement>(null);
 
-  // Click outside listener to close popovers automatically
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (currencyRef.current && !currencyRef.current.contains(event.target as Node)) {

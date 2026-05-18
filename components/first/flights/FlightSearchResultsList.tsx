@@ -60,21 +60,17 @@ export function FlightSearchResultsList({
   tNoFlightsMatch,
   tAdjustFilters,
 }: FlightSearchResultsListProps) {
-  // Sort State
   const [sortBy, setSortBy] = useState<"best" | "cheapest" | "quickest">("best");
   
-  // Filter States
   const [filterNonstop, setFilterNonstop] = useState(true);
   const [filterOneStop, setFilterOneStop] = useState(true);
   const [filterTwoStops, setFilterTwoStops] = useState(true);
 
-  // Search input fields
   const [fromVal, setFromVal] = useState(from || "Tashkent (TAS)");
   const [toVal, setToVal] = useState(to || "Dubai (DXB)");
   const [departVal, setDepartVal] = useState(departDate || "2026-06-01");
   const [returnVal, setReturnVal] = useState(returnDate || "2026-06-08");
 
-  // Helper to parse duration string (e.g., "4h 40m", "24h 25m") to total minutes for sorting
   const parseDurationToMinutes = (durationStr: string): number => {
     if (!durationStr) return 0;
     const hMatch = durationStr.match(/(\d+)h/);
@@ -84,9 +80,7 @@ export function FlightSearchResultsList({
     return hours * 60 + minutes;
   };
 
-  // Process flights list: filter and then sort
   const processedFlights = useMemo(() => {
-    // 1. Filter
     let filtered = initialFlights.filter((flight) => {
       const stopsStr = (flight.out.stops || "").toLowerCase();
       if (stopsStr.includes("nonstop") && !filterNonstop) return false;
@@ -95,7 +89,6 @@ export function FlightSearchResultsList({
       return true;
     });
 
-    // 2. Sort
     return [...filtered].sort((a, b) => {
       if (sortBy === "cheapest") {
         return a.price - b.price;
@@ -105,7 +98,6 @@ export function FlightSearchResultsList({
         const durationB = parseDurationToMinutes(b.out.duration) + parseDurationToMinutes(b.back.duration);
         return durationA - durationB;
       }
-      // "best": custom score combining price and total duration
       const durationA = parseDurationToMinutes(a.out.duration) + parseDurationToMinutes(a.back.duration);
       const durationB = parseDurationToMinutes(b.out.duration) + parseDurationToMinutes(b.back.duration);
       
@@ -115,7 +107,6 @@ export function FlightSearchResultsList({
     });
   }, [initialFlights, sortBy, filterNonstop, filterOneStop, filterTwoStops]);
 
-  // Formatted date string for display
   const formatDateDisplay = (dateStr: string) => {
     if (!dateStr) return "";
     try {

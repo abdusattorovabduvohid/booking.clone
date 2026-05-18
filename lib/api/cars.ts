@@ -57,7 +57,6 @@ export async function getCars({
       }));
     }
 
-    // Apply mock filtering client-side as well for absolute reliability
     if (category) {
       carsList = carsList.filter(c => c.category.toLowerCase() === category.toLowerCase());
     }

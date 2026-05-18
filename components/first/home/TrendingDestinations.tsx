@@ -24,7 +24,6 @@ export function TrendingDestinations() {
   const searchState = useSelector((state: RootState) => state.search);
   const activeCity = searchState.destination || "";
 
-  // Check if active query relates to China to swap subtitle dynamically
   const isChina = useMemo(() => {
     const query = activeCity.toLowerCase();
     return (
@@ -43,7 +42,6 @@ export function TrendingDestinations() {
     ? t("trending_destinations_subtitle_cn")
     : t("trending_destinations_subtitle_uz");
 
-  // Premium destinations matching screenshot exactly!
   const destinations: TrendingItem[] = [
     {
       id: "guangzhou",

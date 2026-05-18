@@ -36,13 +36,11 @@ export default async function CarSearchPage({
   const activeCompany = resolvedSearchParams.company || "";
   const sortBy = resolvedSearchParams.sortBy || "priceAsc";
 
-  // Calculate rental duration in days
   const d1 = new Date(pickupDate);
   const d2 = new Date(dropoffDate);
   const diffTime = Math.abs(d2.getTime() - d1.getTime());
   const rentalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 3;
 
-  // Fetch cars with active filters
   let cars = await getCars({
     category: activeCategory,
     transmission: activeTransmission,
@@ -51,7 +49,6 @@ export default async function CarSearchPage({
     search: pickup,
   });
 
-  // Sorting
   if (sortBy === "priceAsc") {
     cars = [...cars].sort((a, b) => a.priceDay - b.priceDay);
   } else if (sortBy === "priceDesc") {
@@ -60,7 +57,6 @@ export default async function CarSearchPage({
     cars = [...cars].sort((a, b) => b.rating - a.rating);
   }
 
-  // Generate filter URLs helper
   const createFilterLink = (key: string, value: string) => {
     const newParams = new URLSearchParams();
     newParams.set("pickup", pickup);

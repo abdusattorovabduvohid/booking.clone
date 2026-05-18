@@ -14,7 +14,6 @@ export default async function AttractionsPage({ params, searchParams }: PageProp
   const { query } = await searchParams;
   setRequestLocale(locale);
 
-  // Parse target locale dictionary
   const dict = {
     en: {
       title: "Attractions, activities and experiences",
@@ -61,7 +60,6 @@ export default async function AttractionsPage({ params, searchParams }: PageProp
     clear: "Clear search"
   };
 
-  // Fetch attractions matching target city query
   const attractions = await getAttractions({ city: query });
 
   return (

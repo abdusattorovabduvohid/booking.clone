@@ -25,7 +25,6 @@ export function QuickTripPlanner() {
   const searchState = useSelector((state: RootState) => state.search);
   const activeCity = searchState.destination || "";
 
-  // 1. Determine if searched city is in China or Uzbekistan/Other
   const isChina = useMemo(() => {
     const query = activeCity.toLowerCase();
     return (
@@ -40,7 +39,6 @@ export function QuickTripPlanner() {
     );
   }, [activeCity]);
 
-  // City datasets matching screenshot exactly!
   const chinaCities: CityItem[] = [
     {
       id: "nanjing",
@@ -135,7 +133,6 @@ export function QuickTripPlanner() {
     },
   ];
 
-  // Dynamic values
   const activeCitiesList = isChina ? chinaCities : uzbekCities;
   const activeCityName = activeCity || (locale === "ru" ? "Ташкент" : locale === "uz" ? "Toshkent" : "Tashkent");
 
@@ -149,7 +146,6 @@ export function QuickTripPlanner() {
     return `${dist} km from ${activeCityName}`;
   };
 
-  // Localized Tabs matching screenshot
   const tabsList = useMemo(() => {
     if (locale === "uz") {
       return ["Hashamatli kurortlar", "Festivallar va tadbirlar", "Gastronomiya", "Tabiat bag'rida", "Yana"];
@@ -162,22 +158,17 @@ export function QuickTripPlanner() {
 
   const [activeTab, setActiveTab] = useState(tabsList[0]);
 
-  // Sort cities dynamically based on active tab to create a live sorting experience!
   const sortedCitiesList = useMemo(() => {
     const list = [...activeCitiesList];
     const tabIndex = tabsList.indexOf(activeTab);
 
     if (tabIndex === 0) {
-      // Luxury Spa: Sort by distance descending
       return list.sort((a, b) => b.dist - a.dist);
     } else if (tabIndex === 1) {
-      // Festivals & Events: Sort alphabetically by ID
       return list.sort((a, b) => a.id.localeCompare(b.id));
     } else if (tabIndex === 2) {
-      // Gastronomy: Reverse order
       return list.reverse();
     } else if (tabIndex === 3) {
-      // Nature Retreats: Sort by distance ascending
       return list.sort((a, b) => a.dist - b.dist);
     }
     return list;
@@ -188,7 +179,6 @@ export function QuickTripPlanner() {
     router.push(`/search?destination=${encodeURIComponent(cityName)}`);
   };
 
-  // Slider refs
   const sliderRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
@@ -219,7 +209,6 @@ export function QuickTripPlanner() {
     };
   }, [sortedCitiesList]);
 
-  // Adjust active tab state if locale changes
   useEffect(() => {
     setActiveTab(tabsList[0]);
   }, [tabsList]);

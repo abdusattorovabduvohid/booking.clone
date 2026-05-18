@@ -108,7 +108,6 @@ export default function CheckoutPage() {
   const onSubmit = (data: any) => {
     if (!property) return;
     
-    // Save to localStorage so profile booking page lists it dynamically!
     const newBooking = {
       hotelName: property.name,
       city: property.city,

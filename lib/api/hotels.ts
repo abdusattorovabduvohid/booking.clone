@@ -176,7 +176,6 @@ function normalizeHotel(h: any): Hotel {
   };
 }
 
-// Fallback logic
 import { getMockHotels } from "../mocks/hotels";
 import { getMockCities } from "../mocks/cities";
 
@@ -265,7 +264,6 @@ export async function searchHotels(params: {
       const q = params.destination.toLowerCase();
       const cleanQ = q.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|\p{Emoji}/gu, '').trim().toLowerCase();
 
-      // Localized city translations dictionary to guarantee 100% accurate stays matching
       const cityMap: Record<string, string> = {
         "guanchjou": "guangzhou",
         "гуанчжоу": "guangzhou",
@@ -317,14 +315,12 @@ export async function getHotelById(id: string | number): Promise<Hotel | null> {
     console.error("getHotelById Supabase query error:", error);
   }
 
-  // 1. Check direct match in regular mock list
   const all = getMockHotels("all").map(normalizeHotel);
   const foundMock = all.find((h) => String(h.id) === strId);
   if (foundMock) {
     return foundMock;
   }
 
-  // 2. Dynamic Fallback System for custom landing page slugs (prevent 404)
   const formattedName = strId
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -466,7 +462,6 @@ export async function searchAutocomplete(q: string): Promise<Hotel[]> {
   const query = q.toLowerCase();
 
   try {
-    // 1. Search the massive 220+ cities mock list first
     const matchedCities = getMockCities()
       .filter((c) =>
         c.name.toLowerCase().includes(query) ||
@@ -509,7 +504,6 @@ export async function searchAutocomplete(q: string): Promise<Hotel[]> {
         reviewsList: []
       }));
 
-    // 2. Search local hotels list
     const all = getMockHotels("all").map(normalizeHotel);
     const matchedHotels = all
       .filter(

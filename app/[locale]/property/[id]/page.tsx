@@ -26,10 +26,8 @@ import {
   FaInfoCircle 
 } from "react-icons/fa";
 
-// Incremental Static Regeneration (ISR): Revalidate pages in the background every hour
 export const revalidate = 3600;
 
-// Pre-render property detail pages statically at build time for high performance and low server load
 export async function generateStaticParams() {
   const locales = ["en", "ru", "uz"];
   const hotels = getMockHotels("all");
@@ -60,7 +58,6 @@ export default async function PropertyPage({ params }: PageProps) {
     notFound();
   }
 
-  // Multilingual mapping
   const localMap: any = {
     ru: {
       overview: "Обзор",

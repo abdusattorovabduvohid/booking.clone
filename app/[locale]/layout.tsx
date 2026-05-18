@@ -46,7 +46,6 @@ export default async function RootLayout({
 
   setRequestLocale(locale);
 
-  // Providing all messages to the client
   const messages = await getMessages();
 
   return (

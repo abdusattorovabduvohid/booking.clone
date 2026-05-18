@@ -30,7 +30,6 @@ export default async function FlightSearchResultsPage({
   const adultsParam = resolvedParams.adults || "1";
   const cabinParam = resolvedParams.cabin || "Economy";
 
-  // Pre-fetch flights on the server for speed and SEO optimization
   const flights = await getFlights({ from: fromParam, to: toParam, locale });
 
   return (

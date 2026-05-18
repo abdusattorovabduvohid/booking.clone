@@ -31,7 +31,6 @@ export default function CarCheckoutPage() {
   const pickupDate = searchParams.get("pickupDate") || "2026-06-12";
   const dropoffDate = searchParams.get("dropoffDate") || "2026-06-15";
 
-  // Calculate rental duration in days
   const d1 = new Date(pickupDate);
   const d2 = new Date(dropoffDate);
   const diffTime = Math.abs(d2.getTime() - d1.getTime());
@@ -123,7 +122,6 @@ export default function CarCheckoutPage() {
   const onSubmit = (data: any) => {
     if (!car) return;
     
-    // Save to localStorage so profile bookings display it!
     const newBooking = {
       hotelName: `${car.name} (${car.company})`,
       city: pickup,
@@ -141,7 +139,6 @@ export default function CarCheckoutPage() {
 
     toast.success(t.successMsg);
     
-    // Redirect to profile bookings tab
     router.push(`/${currentLocale}/profile?tab=bookings`);
   };
 

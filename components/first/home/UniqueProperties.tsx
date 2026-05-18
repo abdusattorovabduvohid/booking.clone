@@ -93,7 +93,6 @@ export function UniqueProperties() {
     },
   ];
 
-  // Ratings helper
   const getRatingLabel = (rating: number) => {
     if (rating >= 9.0) {
       if (locale === "ru") return "Превосходно";
@@ -105,7 +104,6 @@ export function UniqueProperties() {
     return "Wonderful";
   };
 
-  // Pricing helper
   const getPriceLabel = (orig?: number, disc?: number) => {
     if (!disc) return null;
     const uzsDisc = disc * 12000;
@@ -165,7 +163,6 @@ export function UniqueProperties() {
     );
   };
 
-  // Carousel navigation code
   const sliderRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);

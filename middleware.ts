@@ -7,20 +7,17 @@ const { auth } = NextAuth(authConfig);
 
 const intlMiddleware = createIntlMiddleware(routing);
 
-// Routes that require authentication
 const protectedRoutes = ["/profile", "/checkout", "/bookings", "/wishlist"];
 
 export default auth((req) => {
   const isAuth = !!req.auth;
   const path = req.nextUrl.pathname;
 
-  // Check if current path matches any protected route pattern
   const isProtected = protectedRoutes.some(route => 
     path.includes(route)
   );
 
   if (!isAuth && isProtected) {
-    // Extract locale segment from path (e.g. /ru/profile -> ru, /uz/profile -> uz)
     const segments = path.split("/").filter(Boolean);
     const detectedLocale = segments[0] && routing.locales.includes(segments[0] as any) 
       ? segments[0] 

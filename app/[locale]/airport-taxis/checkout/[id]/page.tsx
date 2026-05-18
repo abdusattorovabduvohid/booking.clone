@@ -127,7 +127,6 @@ export default function TaxiCheckoutPage() {
   const onSubmit = (data: any) => {
     if (!taxi) return;
     
-    // Save to localStorage so profile booking page displays it!
     const newBooking = {
       hotelName: `${taxi.name} (Airport Transfer)`,
       city: dropoff,
@@ -145,7 +144,6 @@ export default function TaxiCheckoutPage() {
 
     toast.success(t.successMsg);
     
-    // Redirect to profile bookings tab
     router.push(`/${currentLocale}/profile?tab=bookings`);
   };
 

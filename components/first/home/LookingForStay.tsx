@@ -74,7 +74,6 @@ export function LookingForStay() {
     },
   ];
 
-  // Ratings Label Translator
   const getRatingLabel = (rating: number) => {
     if (rating >= 9.0) {
       if (locale === "ru") return "Превосходно";
@@ -86,9 +85,7 @@ export function LookingForStay() {
     return "Wonderful";
   };
 
-  // Currency Formatter
   const getPriceLabel = (orig: number, disc: number) => {
-    // Standard conversion multiplier to keep price relative (e.g. 1 USD = 12,000 UZS)
     const uzsOrig = orig * 12000;
     const uzsDisc = disc * 12000;
 
@@ -131,7 +128,6 @@ export function LookingForStay() {
     );
   };
 
-  // Carousel navigation scroll code
   const sliderRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);

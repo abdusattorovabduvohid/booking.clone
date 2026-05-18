@@ -65,7 +65,6 @@ export function PropertyActionButtons({
       }
     }
 
-    // Fallback: Copy to clipboard
     try {
       await navigator.clipboard.writeText(window.location.href);
       setShowTooltip(true);

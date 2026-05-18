@@ -92,7 +92,6 @@ export function getFallbackFlights(locale: string = "en"): Flight[] {
     const route = cities[Math.floor(Math.random() * cities.length)];
     const isDirect = Math.random() > 0.3;
     
-    // Randomize times
     const outDepHour = Math.floor(Math.random() * 24);
     const outDepMin = Math.random() > 0.5 ? "00" : "30";
     const outArrHour = (outDepHour + 4) % 24;
@@ -145,7 +144,6 @@ export function getFallbackFlights(locale: string = "en"): Flight[] {
     });
   }
 
-  // Sort so Cheapest/Best are at the top
   results.sort((a, b) => {
     if (a.tags.includes("Cheapest") && !b.tags.includes("Cheapest")) return -1;
     if (b.tags.includes("Cheapest") && !a.tags.includes("Cheapest")) return 1;

@@ -19,14 +19,12 @@ export default function AirportTaxisPage() {
   const [filteredTaxis, setFilteredTaxis] = useState<Taxi[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Form states
   const [pickup, setPickup] = useState("");
   const [dropoff, setDropoff] = useState("");
   const [pickupDate, setPickupDate] = useState("2026-06-12");
   const [pickupTime, setPickupTime] = useState("12:00");
   const [passengers, setPassengers] = useState(2);
 
-  // Dropdown states
   const [showPickupDropdown, setShowPickupDropdown] = useState(false);
   const [showDropoffDropdown, setShowDropoffDropdown] = useState(false);
   const [showPassengerDropdown, setShowPassengerDropdown] = useState(false);
@@ -54,7 +52,6 @@ export default function AirportTaxisPage() {
       const data = await getTaxis();
       setTaxis(data);
       
-      // Initial parsing of search parameters from URL
       const queryPickup = searchParams.get("pickup");
       const queryDropoff = searchParams.get("dropoff");
       const queryDate = searchParams.get("date");
@@ -112,7 +109,6 @@ export default function AirportTaxisPage() {
     }
     setFilteredTaxis(results);
 
-    // Dynamic routing path with parameters
     router.push(`/${currentLocale}/airport-taxis?pickup=${encodeURIComponent(qPickup)}&dropoff=${encodeURIComponent(qDropoff)}&date=${pickupDate}&time=${pickupTime}&passengers=${passengers}`, { scroll: false });
   };
 

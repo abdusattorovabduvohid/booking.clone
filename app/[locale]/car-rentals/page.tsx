@@ -5,7 +5,6 @@ import { getCars } from "@/lib/api/cars";
 import { CarSearchWidget } from "@/components/first/car-rentals/CarSearchWidget";
 import { Link } from "@/i18n/routing";
 
-// Incremental Static Regeneration (ISR): Revalidate pages in the background every hour
 export const revalidate = 3600;
 
 export default async function CarRentalsPage({ params }: { params: Promise<{ locale: string }> }) {

@@ -24,12 +24,6 @@ export function AttractionSearchWidget({
   const [suggestions, setSuggestions] = useState<CityMock[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setValue(initialQuery);
-  }, [initialQuery]);
-
-  // Click outside suggestions list listener
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -42,7 +36,6 @@ export function AttractionSearchWidget({
     };
   }, []);
 
-  // Live filter cities database as the user types
   const handleInputChange = (val: string) => {
     setValue(val);
     if (!val.trim()) {

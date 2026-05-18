@@ -27,30 +27,24 @@ export function SearchWidget() {
   const router = useRouter();
   const searchState = useSelector((state: RootState) => state.search);
 
-  // States
   const [query, setQuery] = useState(searchState.destination);
   const [results, setResults] = useState<Hotel[]>([]);
   
-  // Popover Toggle States
   const [isDestOpen, setIsDestOpen] = useState(false);
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [isGuestPickerOpen, setIsGuestPickerOpen] = useState(false);
 
-  // Calendar Pagination & Active Tab & Pills
   const [currentMonthLeft, setCurrentMonthLeft] = useState(new Date());
   const [calendarTab, setCalendarTab] = useState<"calendar" | "flexible">("calendar");
   const [activeDatePill, setActiveDatePill] = useState("exact"); // exact, 1, 2, 3, 7
 
-  // Animals Toggle State
   const [travelWithPets, setTravelWithPets] = useState(false);
 
-  // Refs for Click Outside
   const widgetRef = useRef<HTMLDivElement>(null);
   const destRef = useRef<HTMLDivElement>(null);
   const dateRef = useRef<HTMLDivElement>(null);
   const guestRef = useRef<HTMLDivElement>(null);
 
-  // Autocomplete Recents
   const defaultRecent = [
     {
       id: 51,
@@ -84,12 +78,10 @@ export function SearchWidget() {
     }
   ];
 
-  // Sync Input query with Redux slice destination
   useEffect(() => {
     setQuery(searchState.destination);
   }, [searchState.destination]);
 
-  // Autocomplete fetcher
   useEffect(() => {
     const fetchResults = async () => {
       if (!query.trim()) {
@@ -104,7 +96,6 @@ export function SearchWidget() {
     return () => clearTimeout(timer);
   }, [query]);
 
-  // Click Outside hooks
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (destRef.current && !destRef.current.contains(event.target as Node)) {
@@ -155,7 +146,6 @@ export function SearchWidget() {
     router.push(`/search?destination=${encodeURIComponent(query)}`);
   };
 
-  // Calendar Helpers
   const checkInDate = new Date(searchState.checkIn);
   const checkOutDate = new Date(searchState.checkOut);
   const today = startOfToday();
@@ -167,7 +157,6 @@ export function SearchWidget() {
       dispatch(setCheckIn(day.toISOString()));
       dispatch(setCheckOut(addDays(day, 1).toISOString()));
     } else if (isSameDay(day, checkInDate)) {
-      // Do nothing or toggle
     } else if (isBefore(day, checkInDate)) {
       dispatch(setCheckIn(day.toISOString()));
       dispatch(setCheckOut(addDays(day, 1).toISOString()));
@@ -187,7 +176,6 @@ export function SearchWidget() {
     const days = eachDayOfInterval({ start, end });
     const startWeekday = getDay(start); // 0 = Sunday, 1 = Monday etc.
     
-    // Align starting day correctly (offset grid columns)
     const offset = Array(startWeekday === 0 ? 6 : startWeekday - 1).fill(null);
 
     const weekDaysRu = ["пн", "вт", "ср", "чт", "пт", "сб", "вс"];
